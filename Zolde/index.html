@@ -32,7 +32,38 @@
 				</ul>
 			</nav>
 		</header>
+
 		<div class="container destaque">
+
+			<section class="entrance-section">
+				<p>Registrar entrada de veículo</p>
+
+				<form class="entrance-form" onsubmit="registerEntranceSubmit(event)">
+					<label for="plate">Placa do veículo</label>
+					<input type="text" name="plate" id="plate"/>
+
+					<p>Categoria de veículo: </p>
+					<div class="category-block">
+						<div>
+							<input type="radio" id="pequeno" name="category" value="pequeno">
+							<label for="pequeno">Pequeno</label><br>
+						</div>
+						<div>
+							<input type="radio" id="grande" name="category" value="grande">
+							<label for="grande">Grande</label><br>
+						</div>
+						<div>
+							<input type="radio" id="moto" name="category" value="moto">
+							<label for="moto">Moto</label>
+						</div>
+					</div>
+
+					<label for="aditional-services">Serviços adicionais: </label>
+					<input type="text" name="aditional-services" id="aditional-services">
+					
+					<button id="btn-entrance">Registrar entrada</button>
+				</form>
+			</section>
 
 			<section class="busca">
 				<h2>Busca</h2>
@@ -235,6 +266,7 @@
 		<script src="js/jquery.js"></script>
 		<script src="js/home.js"></script>
 		<script src="js/converteMoeda.js"></script>
+		<script src="js/controllers/registerController.js"></script>
 		<script>
 
 		</script>
