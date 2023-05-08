@@ -7,6 +7,10 @@ header {
 	position: relative;
 }
 
+:root {
+	--main-bg-color: #0265AD;
+  }
+
 .sacola {
 	background: url(../img/sacola.png) no-repeat top right;
 	font-size: 14px;
@@ -322,4 +326,43 @@ footer .container {
 }
 .painel button:hover:after {
 	border-top-color: #393939;
+}
+
+.entrance-section {
+    width: 50%;
+    min-height: 181px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    margin: 40px 0;
+	padding: 25px 0;
+}
+
+.entrance-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.entrance-form label, .entrance-form p {
+	margin: 25px 0 10px 0;
+}
+.category-block {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+}
+ #btn-entrance{
+	margin-top: 20px;
+    width: 328px;
+    height: 36px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    background-color: var(--main-bg-color);
+    border-radius: 12px;
+	cursor: pointer;
 }
