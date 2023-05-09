@@ -24,6 +24,7 @@ class ParkingService {
     async delete(parking_id: string) {
         return ParkingModel.deleteOne({ parking_id });
     }
+
 }
 
 export const parkingService = new ParkingService();
