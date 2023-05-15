@@ -10,6 +10,7 @@
 <body>
   <h1>Pagamento</h1>
   <form onsubmit="handlePaymentFormSubmit(event)">
+    <a href="../index.html">X</a>
     <div class="top">
       
       <div class="input">
@@ -36,7 +37,7 @@
           <label for="entrance">Data/hora de entrada</label>
           <div class="hour">
             <input type="date" id="entranceDate" name="entranceDate">    _
-            <input type="text" id="entranceHour" name="entranceHour">
+            <input type="time" id="entranceHour" name="entranceHour">
           </div>
         </div>
 
@@ -44,7 +45,7 @@
           <label for="exit">Data/hora de saída</label>
           <div class="hour">
             <input type="date" id="exitDate" name="exitDate"> _   
-            <input type="text" id="exitHour" name="exitHour">
+            <input type="time" id="exitHour" name="exitHour">
           </div>
         </div>
       </div>
@@ -73,7 +74,7 @@
     </div>
 
     <label for="aditionalServices">Serviços  adicionais</label>
-    <input name="aditionalServices" id="aditionalServices">
+    <input class="aditionalServices" name="aditionalServices" id="aditionalServices">
 
 
     <button type="submit" class="pay-btn">Pagar</button>
