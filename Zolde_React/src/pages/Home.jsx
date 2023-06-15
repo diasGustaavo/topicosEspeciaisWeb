@@ -14,8 +14,8 @@ function Home() {
         <Link className="w-full" to='/checkout'>
           <button className="w-full h-16 bg-blue-400 rounded-lg text-white hover:bg-green-300" type="button">Check-out de veículo</button>        
         </Link>
-        <Link className="w-full" to='/'>
-          <button className="w-full h-16 bg-blue-400 rounded-lg text-white hover:bg-green-300" type="button">Gerenciar Funcionários</button>        
+        <Link className="w-full" to='/dashboard'>
+          <button className="w-full h-16 bg-blue-400 rounded-lg text-white hover:bg-green-300" type="button">Gerenciar Estacionamentos</button>        
         </Link>
       </div>
     </div>

@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Checkin from "./pages/Checkin";
 import Checkout from "./pages/Checkout";
 import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/checkin" element={<Checkin />} />
       <Route path="/checkout" element={<Checkout />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   )
 }
