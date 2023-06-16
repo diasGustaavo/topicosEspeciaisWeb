@@ -6,7 +6,6 @@ require("dotenv/config")
 
 const connection = process.env.DB_CONNECTION || '';
 const swaggerUi = require('swagger-ui-express');
-//const setupSwagger = require('./swagger');
 
 mongoose.connect(connection, { useNewUrlParser: true } as ConnectOptions)
   .then(() => console.log('Conectado ao MongoDB'))
@@ -15,7 +14,6 @@ mongoose.connect(connection, { useNewUrlParser: true } as ConnectOptions)
 const app = express();
 app.use(express.json());
 app.use(router);
-
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.listen(3333, () => console.log("Server is running on 3333"));
