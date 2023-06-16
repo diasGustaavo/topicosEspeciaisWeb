@@ -11,7 +11,7 @@ class ParkingController {
     }
 
     async get(req: Request, resp: Response) {
-        const { parking_id } = req.query;
+        const parking_id = req.params.id;
 
         const response = await parkingService.get(parking_id as string);
         return resp.json(response);

@@ -13,7 +13,6 @@ class VehicleService {
         if (vehicle_id) {
             return VehicleModel.find({ vehicle_id });
         }
-
         return VehicleModel.find();
     }
 

@@ -11,8 +11,7 @@ class VehicleController {
     }
 
     async get(req: Request, resp: Response) {
-        const { vehicle_id } = req.query;
-
+        const vehicle_id = req.params.vehicle_id;
         const response = await vehicleService.get(vehicle_id as string);
         return resp.json(response);
     }
