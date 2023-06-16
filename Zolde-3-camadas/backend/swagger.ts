@@ -1,3 +1,7 @@
+require("dotenv");
+
+const address = process.env.API_BASE_ADDRESS || '';
+
 export const swaggerSpec = {
   openapi: '3.0.3',
   info: {
@@ -6,7 +10,7 @@ export const swaggerSpec = {
   },
   "servers": [
     {
-      "url": "http://localhost:3333/api"
+      "url": address
     }
   ]
   ,
@@ -28,6 +32,9 @@ export const swaggerSpec = {
               },
             },
           },
+          '401':{
+            $ref: '#/components/responses/UnauthorizedError'
+          }
         },
       },
       post: {
@@ -44,7 +51,7 @@ export const swaggerSpec = {
         },
         responses: {
           '200': {
-            description: 'Success',
+            description: 'OK',
             content: {
               'application/json': {
                 schema: {
@@ -53,6 +60,9 @@ export const swaggerSpec = {
               },
             },
           },
+          '401':{
+            $ref: '#/components/responses/UnauthorizedError'
+          }
         },
       },
     },
@@ -101,9 +111,12 @@ export const swaggerSpec = {
               },
             },
           },
+          '401':{
+            $ref: '#/components/responses/UnauthorizedError'
+          },
           '404': {
             description: 'Veículo não encontrado',
-          },
+          }
         },
       },
       delete: {
@@ -120,7 +133,10 @@ export const swaggerSpec = {
         ],
         responses: {
           '200': {
-            description: 'Success',
+            description: 'OK',
+          },
+          '401':{
+            $ref: '#/components/responses/UnauthorizedError'
           }
         }
       },
@@ -142,6 +158,9 @@ export const swaggerSpec = {
               },
             },
           },
+          '401':{
+            $ref: '#/components/responses/UnauthorizedError'
+          }
         },
       },
       post: {
@@ -158,7 +177,7 @@ export const swaggerSpec = {
         },
         responses: {
           '200': {
-            description: 'Success',
+            description: 'OK',
             content: {
               'application/json': {
                 schema: {
@@ -167,6 +186,9 @@ export const swaggerSpec = {
               },
             },
           },
+          '401':{
+            $ref: '#/components/responses/UnauthorizedError'
+          }
         },
       },
     },
@@ -194,9 +216,9 @@ export const swaggerSpec = {
               },
             },
           },
-          '404': {
-            description: 'Estacionamento não encontrado',
-          },
+          '401':{
+            $ref: '#/components/responses/UnauthorizedError'
+          }
         },
       },
       put: {
@@ -232,9 +254,9 @@ export const swaggerSpec = {
               },
             },
           },
-          '404': {
-            description: 'Estacionamento não encontrado',
-          },
+          '401':{
+            $ref: '#/components/responses/UnauthorizedError'
+          }
         },
       },
       delete: {
@@ -250,12 +272,12 @@ export const swaggerSpec = {
           },
         ],
         responses: {
-          '204': {
-            description: 'No Content',
+          '200': {
+            description: 'OK',
           },
-          '404': {
-            description: 'Estacionamento não encontrado',
-          },
+          '401':{
+            $ref: '#/components/responses/UnauthorizedError'
+          }
         },
       },
     },
@@ -308,7 +330,26 @@ export const swaggerSpec = {
         },
       },
     },
+    securitySchemes: {
+      jwtAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+      },
+    },
+    responses: {
+      UnauthorizedError:{
+        description: 'Unauthorized'
+     }
+    }
+    
   },
+  security: [
+    {
+      jwtAuth: [],
+    },
+  ]
+  
 };
 
 //module.exports = swaggerSpec;
