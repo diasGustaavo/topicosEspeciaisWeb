@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-function EditParkingLot() {
+function ParkingLotList() {
+  const [parkingtLots, setParkingtLots] = useState([]);
   const [isNewParkingLotFormActive, setIsNewParkingLotFormActive] = useState(false);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
@@ -34,27 +36,39 @@ function EditParkingLot() {
     setNumberOfVacancies(0);
   }
 
+  function handleRemoveParkingLot(id) {
+    const updatedParkingLots = parkingtLots.filter((parkingLot) => parkingLot.id !== id);
+    setParkingtLots(updatedParkingLots);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
     const formData ={
+      id: parkingtLots.length + 1,
       name,
       address,
       zipCode,
       numberOfVacancies
     }
     
+    parkingtLots.push(formData);
     console.log(formData);
 
     clear();
+    toggleNewParkingLotForm();
   }
 
+
+  useEffect(() =>  {
+  }, []);
+
   return (
-    <div className="w-[26rem] h-[30rem] flex flex-col items-center gap-4 rounded-lg bg-white overflow-scroll hide-scroll-bar z-10">
+    <div className="w-[40rem] h-[32rem] flex flex-col items-center py-4 gap-4 rounded-lg bg-white overflow-scroll hide-scroll-bar z-10">
     {
       isNewParkingLotFormActive ? (
         <form onSubmit={handleSubmit} className='w-full h-full flex flex-col items-center p-4 justify-between' action="">
-          <h1 className='text-xl text-blue-500 font-bold'>
+          <h1 className='text-xl text-blue-500 font-bold mt-2'>
             Formulário de novo estacionamento
           </h1>
 
@@ -88,10 +102,45 @@ function EditParkingLot() {
       ) : (
         <>
           <h1 className="text-2xl font-bold text-blue-400">Estacionamentos</h1>
-          <button className='bg-green-500 rounded-lg px-2 py-1 ml-8 mt-4 text-white hover:bg-blue-500 self-start' onClick={toggleNewParkingLotForm}>Novo estacionamento</button>
+          <div className='w-full flex justify-between items-center mt-4 px-4'>
+            <button className='bg-green-500 rounded-lg px-2 py-1 text-white hover:bg-green-700' onClick={toggleNewParkingLotForm}>Novo estacionamento</button>
+            <Link to='/home'>
+              <button className='rounded-lg px-2 py-1 text-white bg-red-400 hover:bg-red-600 self-start'>Voltar</button>
+            </Link>
+          </div>
           <div className=''>
             <ul className='flex flex-col gap-2 p-4 mt-3'>
-              <li className='flex gap-5'>
+              {
+                parkingtLots.length > 0 ? (
+                  parkingtLots.map((parkingLot) => (
+                    <li key={parkingLot.id} className='flex gap-5 justify-between'>
+                      <span className='text-xl'>
+                        {parkingLot.name}
+                      </span>
+                      <div className='flex gap-2'>
+                        <button className='text-white rounded-lg px-1 bg-green-500 hover:bg-blue-500'>Editar</button>
+                        <button className='text-white rounded-lg px-1 bg-red-500 hover:bg-blue-500' onClick={() => handleRemoveParkingLot(parkingLot.id)}>Excluir</button>
+                      </div>
+                    </li>
+                  ))
+                ) : (
+                  <h1 className='text-xl text-slate-400'>Não há estacionamentos ainda.</h1>
+                )
+              }
+              <Link to={`/parkinglot/1`}>
+                <li className='w-full flex gap-5 hover:bg-green-100 rounded-lg p-2'>
+                  <span className='text-xl'>
+                    Estacionamento 1
+                  </span>
+                  <div className='flex gap-2 items-center'>
+                    <Link to={`/edit-parking-lot/1`}>
+                      <button className='text-white h-7 rounded-lg px-1 bg-green-500 hover:bg-blue-500'>Editar</button>
+                    </Link>
+                    <button className='text-white h-7 rounded-lg px-1 bg-red-500 hover:bg-blue-500'>Excluir</button>
+                  </div>
+                </li>
+              </Link>
+              {/* <li className='flex gap-5'>
                 <span className='text-xl'>
                   Estacionamento 1
                 </span>
@@ -108,16 +157,7 @@ function EditParkingLot() {
                   <button className='text-white rounded-lg px-1 bg-green-500 hover:bg-blue-500'>Editar</button>
                   <button className='text-white rounded-lg px-1 bg-red-500 hover:bg-blue-500'>Excluir</button>
                 </div>
-              </li>
-              <li className='flex gap-5'>
-                <span className='text-xl'>
-                  Estacionamento 1
-                </span>
-                <div className='flex gap-2'>
-                  <button className='text-white rounded-lg px-1 bg-green-500 hover:bg-blue-500'>Editar</button>
-                  <button className='text-white rounded-lg px-1 bg-red-500 hover:bg-blue-500'>Excluir</button>
-                </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </>
@@ -127,4 +167,4 @@ function EditParkingLot() {
   )
 }
 
-export default EditParkingLot
+export default ParkingLotList

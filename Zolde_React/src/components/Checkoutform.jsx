@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 function Checkoutform() {
+  const navigate = useNavigate();
+
+  function handleGoBack() {
+    navigate(-1);
+  }
+
   return (
     <form className="w-[44rem] h-fit flex flex-col p-8 gap-4 justify-center items-center rounded-lg bg-white">
       <h1 className="font-bold text-xl">Pagamento para realizar check-out</h1>
@@ -82,9 +88,7 @@ function Checkoutform() {
         <Link to='/home'>
           <button type="submit" className='w-32 h-12 bg-blue-500 rounded-lg text-white font-bold hover:bg-green-400'>Pagar</button>
         </Link>
-        <Link to='/home'>
-          <button className='w-32 h-12 bg-red-500 rounded-lg text-white font-bold hover:bg-green-400' type="button" id="btn-entrance">Cancelar</button>
-        </Link>
+        <button className='w-32 h-12 bg-red-500 rounded-lg text-white font-bold hover:bg-green-400' type="button"  onClick={handleGoBack}>Cancelar</button>
       </div>
     </form>
   )
