@@ -13,9 +13,9 @@ mongoose.connect(connection, { useNewUrlParser: true } as ConnectOptions)
   .catch((err: any) => console.error('Erro ao conectar ao MongoDB:', err));
 
 const app = express();
+app.use(cors);
 app.use(express.json());
 app.use(router);
-app.use(cors)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.listen(3333, () => console.log("Server is running on 3333"));
