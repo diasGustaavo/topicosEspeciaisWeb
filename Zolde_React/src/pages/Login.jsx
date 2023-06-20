@@ -1,4 +1,4 @@
-import LoginForm from "../components/LoginForm"
+import LoginForm from "../components/LoginForm";
 
 function Login() {
   return (
@@ -6,7 +6,7 @@ function Login() {
       <LoginForm />
       <div className="w-screen h-screen absolute bg-overlay z-0" />
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

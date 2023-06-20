@@ -60,7 +60,7 @@ function RegisterForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-64 h-fit py-4 flex flex-col gap-4 justify-center items-center rounded-lg bg-white z-10"
+      className="w-auto h-fit py-4 flex flex-col gap-4 justify-center items-center rounded-lg bg-white z-10 p-10"
     >
       <h1 className="text-2xl font-bold text-blue-400">
         Easy <span className="text-red-500">Park</span>
@@ -106,14 +106,14 @@ function RegisterForm() {
 
       <div className="flex gap-4">
         <button
-          className="w-20 h-10 bg-blue-400 rounded-lg text-white hover:bg-green-300"
+          className="w-auto h-10 bg-blue-400 rounded-lg text-white hover:bg-green-300 pl-3 pr-3"
           type="submit"
         >
           Cadastrar
         </button>
         <Link to="/login">
           <button
-            className="w-20 h-10 bg-blue-400 rounded-lg text-white hover:bg-green-300"
+            className="w-auto h-10 bg-blue-400 rounded-lg text-white hover:bg-green-300 pl-3 pr-3"
             type="button"
           >
             Voltar
